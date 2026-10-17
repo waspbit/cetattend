@@ -52,12 +52,21 @@ function login(){
 function showSkeleton(){ $('loginErr').hidden = true; }
 function hideSkeleton(){}
 
+/* 90 -> "1 hr 30 mins", 30 -> "30 mins", 120 -> "2 hrs". Zero hours are left out. */
+function fmtDur(min){
+  min = Math.max(0, Math.round(min || 0));
+  const h = Math.floor(min / 60), m = min % 60, parts = [];
+  if (h > 0) parts.push(h + (h === 1 ? ' hr' : ' hrs'));
+  if (m > 0) parts.push(m + (m === 1 ? ' min' : ' mins'));
+  return parts.length ? parts.join(' ') : '0 mins';
+}
+
 function showStatus(s){
   const t = { exempt: 'Fully Exempt', required: 'Penalty Required', none: 'No Penalty' }[s.status];
   const m = s.status === 'exempt'
     ? 'Your recognized privilege qualifies you for full exemption from cleanup-drive penalties.'
     : s.status === 'required'
-    ? 'Your required cleanup-drive penalty is ' + fmt(s.requiredPenalty) + ' hours.'
+    ? 'Your required cleanup-drive penalty is ' + fmtDur(s.requiredPenaltyMin) + '.'
     : 'You have no outstanding penalty hours.';
   $('mTitle').textContent = t; $('mMsg').textContent = m;
   $('mIcon').textContent = s.status === 'required' ? '!' : '\u2713';
@@ -84,9 +93,9 @@ function render(s){
   rows($('profile'), [['Full name', s.name || '—'], ['Student ID', s.studentId], ['Course', s.course],
     ['Privilege', s.privileges.length ? s.privileges.map(p => p.name).join(', ') : 'None']]);
 
-  rows($('penalty'), [['Total penalty hours', fmt(s.totalPenalty)],
+  rows($('penalty'), [['Total penalty hours', fmtDur(s.totalPenaltyMin)],
     ['Exemption status', s.status === 'exempt' ? 'Fully Exempt' : s.status === 'required' ? 'Penalty Required' : 'No Penalty'],
-    ['Required penalty hours', fmt(s.requiredPenalty)]]);
+    ['Required penalty hours', fmtDur(s.requiredPenaltyMin)]]);
 
   const pv = $('privs'); pv.textContent = '';
   if (!s.privileges.length) pv.appendChild(el('span','hint','No privileges recorded.'));
