@@ -1,5 +1,5 @@
 // ===== CONFIG: paste your Apps Script Web app URL (ends in /exec) =====
-const API_URL = 'https://script.google.com/macros/s/AKfycbxjG2GVcfRftAa4l6-r4R-vIeymu8KvGS_aoaTLesWNrUsW62q02NdxVrRd2eb2w2NKrw/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycby0b_bMFn9UlrA7VWvVc570qupNRSwDK51A0HqUtsIPO_uQUm6ZnS8EuRBHiwN-M--rPA/exec';
 
 const $ = id => document.getElementById(id);
 const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
