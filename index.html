@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CET Attendance Tracker</title>
+<link rel="icon" type="image/png" href="assets/cet_logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="brand">
+      <img class="logo" src="assets/tau_logo.png" alt="Tarlac Agricultural University logo" width="44" height="44" onerror="this.style.display='none'">
+      <img class="logo" src="assets/cet_logo.png" alt="College of Engineering and Technology logo" width="44" height="44" onerror="this.style.display='none'">
+      <div class="brand-text"><strong>CET Attendance Tracker</strong><small>College of Engineering and Technology</small></div>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle dark mode">&#9680;</button>
+    <button class="btn btn-sm btn-outline" id="logoutBtn" type="button" hidden>Log out</button>
+  </div>
+</header>
+
+<main>
+  <!-- LOGIN VIEW -->
+  <section id="loginView">
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">College of Engineering and Technology</p>
+          <h1>Attendance Tracker</h1>
+          <p class="lead">Check your attendance record, cleanup-drive penalty hours, and exemption status.</p>
+          <div class="orgs">
+            <p class="orgs-title">How it works</p>
+            <ol class="steps">
+              <li><strong>Enter your details</strong><span>Use your Student ID and course.</span></li>
+              <li><strong>View your record</strong><span>See your attendance and penalty hours.</span></li>
+              <li><strong>Log out when done</strong><span>Your record is cleared from the screen.</span></li>
+            </ol>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Student login</h2>
+          <p class="hint">Fields marked <span class="req">*</span> are required.</p>
+          <div id="loginErr" class="alert" role="alert" hidden></div>
+          <div class="field" id="fId">
+            <label for="sid">Student ID <span class="req">*</span></label>
+            <input id="sid" type="text" autocomplete="off" maxlength="30" placeholder="Enter your Student ID">
+            <span class="err" id="eId"></span>
+          </div>
+          <div class="field" id="fCourse">
+            <label for="course">Course <span class="req">*</span></label>
+            <select id="course"><option value="">Loading courses…</option></select>
+            <span class="err" id="eCourse"></span>
+          </div>
+          <button class="btn btn-gold btn-block" id="loginBtn" type="button"><span class="spinner" aria-hidden="true"></span><span id="loginTxt">Log in</span></button>
+          <p class="note"><strong>Note:</strong> This is a lookup by Student ID and course. It does not verify your identity, so keep your Student ID private.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD VIEW -->
+  <section id="dashView" hidden>
+    <div class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Student dashboard</p>
+          <h1 id="welcome">Welcome</h1>
+          <p class="fullname" id="subline"></p>
+        </div>
+        <div class="hero-profile" aria-labelledby="profTitle">
+          <h2 class="orgs-title" id="profTitle">Student profile</h2>
+          <dl id="profile"></dl>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+            <div class="section"><h2 class="section-title">Attendance summary</h2>
+        <div class="grid" id="stats"></div></div>
+
+      <div class="section"><div class="grid">
+        <div class="card" style="grid-column:1/-1"><h3>Penalty summary</h3><dl id="penalty"></dl>
+          <h3 style="margin-top:16px">Recognized privileges</h3><div id="privs"></div></div>
+      </div></div>
+
+      <p class="note">Records come from the official CET attendance sheet. To correct a record, contact the CET administrator.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="wrap">
+  <div class="wrap foot">
+    <div>
+      <strong>CET Attendance Tracker</strong>
+    </div>
+    <p class="copy">© <span id="year"></span> College of Engineering and Technology, Tarlac Agricultural University.</p>
+  </div>
+
+</footer>
+
+<div id="modal" class="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle" aria-describedby="mMsg">
+    <div class="m-icon" id="mIcon" aria-hidden="true"></div>
+    <h2 id="mTitle"></h2>
+    <p id="mMsg"></p>
+    <button class="btn btn-block" id="mClose" type="button">OK</button>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="script.js?v=1"></script>
+</body>
+</html>
