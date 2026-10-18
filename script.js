@@ -4,7 +4,6 @@ const API_URL = 'https://script.google.com/macros/s/AKfycbx4hFJMP8-ALAB0-IVZAqqC
 const $ = id => document.getElementById(id);
 const el = (t, c, x) => { const e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; };
 const fmt = n => String(Math.round(n * 100) / 100);
-safely("year", () => { $("year").textContent = new Date().getFullYear(); });
 
 /* Theme (follows device by default; toggle is remembered when storage is allowed) */
 (function(){
