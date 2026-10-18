@@ -119,3 +119,5 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal()
 $('loginBtn').onclick = login;
 $('logoutBtn').onclick = logout;
 $('sid').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
+
+ safely("year", () => { $("year").textContent = new Date().getFullYear(); });
