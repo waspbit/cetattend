@@ -92,8 +92,7 @@ function render(s){
                stat(s.absent,'Non-attendance'), stat(s.rate == null ? '—' : s.rate + '%','Attendance rate'));
 
 
-  rows($('profile'), [['Full name', s.name || '—'], ['Student ID', s.studentId], ['Course', s.course],
-    ['Privilege', s.privileges.length ? s.privileges.map(p => p.name).join(', ') : 'None']]);
+  rows($('profile'), [['Full name', s.name || '—'], ['Student ID', s.studentId], ['Course', s.course]]);
 
   rows($('penalty'), [['Total penalty hours', fmtDur(mins(s, 'totalPenalty'))],
     ['Exemption status', s.status === 'exempt' ? 'Fully Exempt' : s.status === 'required' ? 'Penalty Required' : 'No Penalty'],
@@ -118,4 +117,5 @@ $('modal').addEventListener('click', e => { if (e.target === $('modal')) closeMo
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 $('loginBtn').onclick = login;
 $('logoutBtn').onclick = logout;
+$('year').textContent = new Date().getFullYear();
 $('sid').addEventListener('keydown', e => { if (e.key === 'Enter') login(); });
