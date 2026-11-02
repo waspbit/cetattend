@@ -66,40 +66,45 @@
   <!-- DASHBOARD VIEW -->
   <section id="dashView" hidden>
     <div class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow">Student dashboard</p>
-          <h1 id="welcome">Welcome</h1>
-          <p class="fullname" id="subline"></p>
-        </div>
-        <div class="hero-profile" aria-labelledby="profTitle">
-          <h2 class="orgs-title" id="profTitle">Student profile</h2>
-          <dl id="profile"></dl>
-        </div>
+      <div class="wrap">
+        <p class="eyebrow">Student dashboard</p>
+        <h1 id="welcome">Welcome</h1>
+        <p class="fullname" id="subline"></p>
       </div>
     </div>
-    <div class="wrap">
-            <div class="section"><h2 class="section-title">Attendance summary</h2>
-        <div class="grid" id="stats"></div></div>
 
-      <div class="section"><div class="grid">
-        <div class="card" style="grid-column:1/-1"><h3>Penalty summary</h3><dl id="penalty"></dl>
-          <h3 style="margin-top:16px">Recognized privileges</h3><div id="privs"></div></div>
-      </div></div>
+    <div class="wrap">
+      <div class="section">
+        <h2 class="section-title">Attendance summary</h2>
+        <div class="grid stats-grid" id="stats"></div>
+      </div>
+
+      <div class="section">
+        <div class="grid two">
+          <div class="card">
+            <h3>Student profile</h3>
+            <dl id="profile"></dl>
+          </div>
+
+          <div class="card">
+            <h3>Penalty summary</h3>
+            <dl id="penalty"></dl>
+            <h3 style="margin-top:16px">Recognized privileges</h3>
+            <div id="privs"></div>
+          </div>
+        </div>
+      </div>
 
       <p class="note">Records come from the official CET attendance sheet. To correct a record, contact the CET administrator.</p>
     </div>
   </section>
 </main>
 
-<footer class="footer"><div class="wrap">
-  <div class="wrap foot">
-    <div>
-      <strong>CET Attendance Tracker</strong>
-    </div>
-    <p class="copy">© <span id="year"></span> College of Engineering and Technology, Tarlac Agricultural University.</p>
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>CET Attendance Tracker</strong></p>
+    <p>&copy; <span id="year"></span> College of Engineering and Technology, Tarlac Agricultural University.</p>
   </div>
-
 </footer>
 
 <div id="modal" class="modal" hidden>
